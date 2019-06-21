@@ -1,0 +1,23 @@
+{
+  "name": "polymerApp",
+  "description": "Applicatie voor opdracht AUI",
+  "main": "index.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^2.0.0",
+    "paper-checkbox": "PolymerElements/paper-checkbox#2.0.4",
+    "paper-styles": "PolymerElements/paper-styles#2.1.0",
+    "iron-checked-element-behavior": "PolymerElements/iron-checked-element-behavior#2",
+    "iron-validatable-behavior": "PolymerElements/iron-validatable-behavior#2",
+    "iron-form-element-behavior": "PolymerElements/iron-form-element-behavior#2",
+    "iron-behaviors": "PolymerElements/iron-behaviors#2",
+    "iron-meta": "PolymerElements/iron-meta#2",
+    "iron-a11y-keys-behavior": "PolymerElements/iron-a11y-keys-behavior#2"
+  },
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester#^6.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
+  },
+  "resolutions": {
+    "paper-styles": "1 - 2"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "polymerApp",
+  "short_name": "polymerApp",
+  "description": "Applicatie voor opdracht AUI",
+  "start_url": "/",
+  "display": "standalone"
+}

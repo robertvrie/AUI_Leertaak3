@@ -1,0 +1,107 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="../../bower_components/polymer/lib/utils/gestures.html">
+<link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
+
+<dom-module id="polymerapp-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      p{
+        display: inline;
+      }
+    </style>
+    <h3>Vrij</h3>
+        <dom-repeat
+          items="{{tafels}}"
+          as="tafel"
+          filter="isNietBezet"
+          observe="bezet">
+          <template>
+            <div>
+              <paper-checkbox checked="{{tafel.bezet}}"></paper-checkbox>
+              <p value="">Tafel {{tafel.nummer}}</p>
+              <button on-click="verwijderTafel({{tafel.nummer}})">verwijder</button>
+            </div>
+
+          </template>
+        </dom-repeat>
+
+      <h3>Bezet</h3>
+        <dom-repeat
+          items="{{tafels}}"
+          as="tafel"
+          filter="isBezet"
+          observe="bezet">
+          <template>
+            <div>
+              <paper-checkbox checked="{{tafel.bezet}}"></paper-checkbox>
+              <p value="">Tafel {{tafel.nummer}}</p>
+            </div>
+
+          </template>
+        </dom-repeat>
+      <button type="button" on-click="voegTafelToe">Voeg tafel toe</button>
+        <dom-repeat
+          items="{{tafels}}"
+          as="tafel"
+          filter="bestaatTafel"
+          observe="nummer">
+        </dom-repeat>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class PolymerAppApp extends Polymer.Element {
+      static get is() { return 'polymerapp-app'; }
+      static get properties() {
+        return {
+          tafels:{
+            type: Array,
+            value: () => [],
+            notify: true,
+            reflectToAttribute: true
+          }
+        }
+      };
+      voegTafelToe(){
+        const nieuweTafel = {
+          nummer: 1,
+          bezet: false
+        };
+        this.push("tafels",nieuweTafel);
+      }
+
+      isNietBezet(tafel){
+        return !tafel.bezet;
+      }
+
+      isBezet(tafel){
+        return tafel.bezet;
+      }
+
+      verwijderTafel(tafel){
+        this.tafel.nummer = "1";
+        console.log(tafel.nummer);
+        this.notifyPath("tafel.nummer");
+        return true;
+      }
+
+      bestaatTafel(tafel){
+        if(this.tafel.nummer = undefined){
+          return false;
+        }
+        else{
+          return true;
+        }
+      }
+    }
+
+    window.customElements.define(PolymerAppApp.is, PolymerAppApp);
+  </script>
+</dom-module>
